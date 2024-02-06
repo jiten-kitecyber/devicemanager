@@ -38,7 +38,7 @@ func (gd *GlobalDNS) SetDNS(iface, primaryDNS, secondaryDNS string) error {
 		if !gd.HasCommand("sh") {
 			return fmt.Errorf("sh command not for operating system: %s", runtime.GOOS)
 		}
-		cmd = exec.Command("sudo", "sh", "-c", fmt.Sprintf("echo 'nameserver %s\nnameserver %s' > /etc/resolv.conf", primaryDNS, secondaryDNS))
+		cmd = exec.Command("sh", "-c", fmt.Sprintf("echo 'nameserver %s\nnameserver %s' > /etc/resolv.conf", primaryDNS, secondaryDNS))
 
 	default:
 		return fmt.Errorf("unsupported operating system: %s", runtime.GOOS)

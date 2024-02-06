@@ -4,7 +4,7 @@ type IDNSDeviceManager interface {
 	HasCommand(cmd string) bool
 	SetDNS(iface string, primary string, secondary string) error
 	GetActiveInterfaces() ([]string, error)
-	GetDNS(iface string) (string, string, error)
+	GetDNS(string) (string, string, error)
 	PostSetup() error
 }
 
