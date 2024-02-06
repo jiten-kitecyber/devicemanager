@@ -13,7 +13,12 @@ type GlobalDNS struct{}
 // there is no significance for iface here as it is system level DNS. This is kept to satisfy the interface
 func (gd *GlobalDNS) SetDNS(iface, primaryDNS, secondaryDNS string) error {
 	var cmd *exec.Cmd
-
+	if !IsValidIP(primaryDNS) {
+		return fmt.Errorf("invalid primary dns ip address %v", primaryDNS)
+	}
+	if !IsValidIP(secondaryDNS) {
+		return fmt.Errorf("invalid secondary dns ip address %v", secondaryDNS)
+	}
 	switch runtime.GOOS {
 	case "windows":
 		if !gd.HasCommand("netsh") {

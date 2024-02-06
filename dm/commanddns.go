@@ -13,6 +13,12 @@ import (
 type CommandDNS struct{}
 
 func (cd *CommandDNS) SetDNS(iface, primaryDNS, secondaryDNS string) error {
+	if !IsValidIP(primaryDNS) {
+		return fmt.Errorf("invalid primary dns ip address %v", primaryDNS)
+	}
+	if !IsValidIP(secondaryDNS) {
+		return fmt.Errorf("invalid secondary dns ip address %v", secondaryDNS)
+	}
 	var cmd *exec.Cmd
 	if strings.ToLower(iface) == "all" {
 		switch runtime.GOOS {

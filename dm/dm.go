@@ -1,5 +1,7 @@
 package dm
 
+import "net"
+
 type IDNSDeviceManager interface {
 	HasCommand(cmd string) bool
 	SetDNS(iface string, primary string, secondary string) error
@@ -9,4 +11,9 @@ type IDNSDeviceManager interface {
 }
 
 type IFirewallManager interface {
+}
+
+func IsValidIP(ip string) bool {
+	parsedIP := net.ParseIP(ip)
+	return parsedIP != nil
 }
