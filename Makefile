@@ -6,17 +6,31 @@ clean:
 
 create:
 	mkdir binaries
-	mkdir binaries/linux_386 binaries/linux_amd64 binaries/windows_amd64 binaries/windows_386 binaries/darwin_arm64 binaries/darwin_amd64
+	# mkdir binaries/linux_386 binaries/linux_amd64 binaries/windows_amd64 binaries/windows_386 binaries/darwin_arm64 binaries/darwin_amd64
 
 build:
-	GOARCH=386 && GOOS=linux go build -o binaries/linux_386/dm-cmd main.go
-	GOARCH=amd64 && GOOS=linux go build -o binaries/linux_amd64/dm-cmd main.go
+	GOARCH=386 && GOOS=linux go build -o binaries/dm_linux_386 main.go
+	GOARCH=386 && GOOS=linux go build -o binaries/dm_linux_amd64 main.go
+	GOARCH=386 && GOOS=linux go build -o binaries/dm_linux_arm64 main.go
 
-	GOARCH=386 && GOOS=windows go build -o binaries/windows_386/dm-cmd.exe main.go
-	GOARCH=amd64 && GOOS=windows go build -o binaries/windows_amd64/dm-cmd.exe main.go
+	GOARCH=386 && GOOS=windows go build -o binaries/dm_windows_386.exe main.go
+	GOARCH=386 && GOOS=windows go build -o binaries/dm_windows_amd64.exe main.go
 
-	GOARCH=amd64 && GOOS=darwin go build -o binaries/darwin_amd64/dm-cmd main.go
-	GOARCH=arm64 && GOOS=darwin go build -o binaries/darwin_arm64/dm-cmd main.go
+	GOARCH=386 && GOOS=darwin go build -o binaries/dm_darwin_amd64 main.go
+	GOARCH=386 && GOOS=darwin go build -o binaries/dm_darwin_arm64 main.go
+
+
+
+
+
+	# GOARCH=386 && GOOS=linux go build -o binaries/linux_386/dm-cmd main.go
+	# GOARCH=amd64 && GOOS=linux go build -o binaries/linux_amd64/dm-cmd main.go
+
+	# GOARCH=386 && GOOS=windows go build -o binaries/windows_386/dm-cmd.exe main.go
+	# GOARCH=amd64 && GOOS=windows go build -o binaries/windows_amd64/dm-cmd.exe main.go
+
+	# GOARCH=amd64 && GOOS=darwin go build -o binaries/darwin_amd64/dm-cmd main.go
+	# GOARCH=arm64 && GOOS=darwin go build -o binaries/darwin_arm64/dm-cmd main.go
 
 	
 
