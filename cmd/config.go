@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"devicemanager/dm"
+	"github.com/jiten-kitecyber/devicemanager/manager"
 
 	"log"
 
@@ -33,9 +33,9 @@ var configureCmd = &cobra.Command{
 	Long:  `config is to configure dns and firewall.dns or firewall settings to be supplied`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if configType == "dns" { // system wide dns
-			var idm dm.IDNSDeviceManager
+			var idm manager.IDNSDeviceManager
 			if scope == "system" {
-				idm = new(dm.GlobalDNS)
+				idm = new(manager.GlobalDNS)
 				if primaryDNS == "" || secondaryDNS == "" {
 					log.Fatalln("primary and secondary dns ips must be given")
 				}
@@ -47,7 +47,7 @@ var configureCmd = &cobra.Command{
 				if iface == "" {
 					log.Fatalln("interface cannot be empty")
 				}
-				idm = new(dm.CommandDNS)
+				idm = new(manager.CommandDNS)
 				if primaryDNS == "" || secondaryDNS == "" {
 					log.Fatalln("primary and secondary dns ips must be given")
 				}

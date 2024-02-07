@@ -1,4 +1,4 @@
-module devicemanager
+module github.com/jiten-kitecyber/devicemanager
 
 go 1.21.0
 
