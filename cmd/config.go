@@ -21,7 +21,7 @@ func init() {
 	configureCmd.Flags().StringVarP(&scope, "scope", "s", "system", "two types of the scopes. system|command")
 	configureCmd.Flags().StringVarP(&primaryDNS, "primarydns", "pd", "", "provide primary dns")
 	configureCmd.Flags().StringVarP(&secondaryDNS, "secondarydns", "sd", "", "provide secondary dns")
-	configureCmd.Flags().StringVarP(&iface, "interface", "i", "", "provide interfaces based on the system")
+	configureCmd.Flags().StringVarP(&iface, "interface", "i", "all", "provide interfaces based on the system")
 	configureCmd.Flags().StringVarP(&show, "show", "sh", "", "shows current dns|firewall settings")
 
 	rootCmd.AddCommand(configureCmd)
